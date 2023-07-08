@@ -1,0 +1,48 @@
+﻿<Window x:Class="WpfCookBook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:WpfCookBook.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <ListBox x:Name="listBox" Margin="0,0,485,0" ItemsSource="{Binding FoodRecepte}" SelectedItem="{Binding Path=SelectFoodRecepte}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="315, 0,0,0">
+            <Image Source="{Binding Path=SelectFoodRecepte.PicturePath}"/>
+
+            <TextBox Text="{Binding Path=SelectFoodRecepte.Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            <TextBox Text="{Binding Path=SelectFoodRecepte.Rating, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            <TextBox Text="{Binding Path=SelectFoodRecepte.Ingridients, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            <ListBox x:Name="listBox2" ItemsSource="{Binding SelectFoodRecepte.Ingridients}" Height="100">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Amount}"></TextBlock>
+                            <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button Command="{Binding Path=DeleteOneCommand}">Удалить данные</Button>
+
+            <Button Command="{Binding Path=AddNewReceptCommand}">Добавить данные</Button>
+        </StackPanel>
+    </Grid>
+</Window>

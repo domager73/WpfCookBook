@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Image\AnKnow.jpg" />
+    <None Remove="Image\Chess.jpg" />
+    <None Remove="Image\PanCakes.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.20.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\AnKnow.jpg" />
+    <Content Include="Image\Chess.jpg" />
+    <Resource Include="Image\PanCakes.jpg" />
+  </ItemGroup>
+
+</Project>
